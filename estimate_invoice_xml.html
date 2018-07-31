@@ -30,7 +30,6 @@
                     console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
                 },
                 success: function (result) {
-				console.log(result);
                     $("#exc").val(result).show();
                 }
             });
