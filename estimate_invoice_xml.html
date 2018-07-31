@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Get Jarvis Estimate - XML</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<input type="button" class="btn btn-primary" id="btnGetEstimateXml" value="Get Estimate (Xml)"></input>
+		<br/>
+		<textarea style="width:100%;height:200px;" id="exc"></textarea>
+
+		<script type="text/javascript">
+		$("#btnGetEstimateXml").on("click", function () {
+            var model = '<estimate><estimate_id>REP11107100027</estimate_id><invoice>true</invoice></estimate>';
+
+            $.ajax({
+                url: "http://localhost:44370/api/estimate/get",
+                type: 'POST',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Content-Type", "application/xml");
+                    xhr.setRequestHeader("Accept", "application/xml");
+                    xhr.setRequestHeader("email", "kishan@vesuviois.com");
+                    xhr.setRequestHeader("password", "Abcd1#");
+                },
+                dataType: "text",
+                data: model,
+                error: function (err) {
+                    console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+                },
+                success: function (result) {
+				console.log(result);
+                    $("#exc").val(result).show();
+                }
+            });
+        });
+		</script>
+	</body>
+</html>

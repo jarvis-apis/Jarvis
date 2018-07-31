@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Get Jarvis Estimate - Json</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<input type="button" class="btn btn-primary" id="btnGetEstimateJson" value="Get Estimate (Json)"></input>
+		<br/>
+		<textarea style="width:100%;height:200px;" id="exc"></textarea>
+
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("#btnGetEstimateJson").on("click", function () {
+				var estimate = {
+					'estimate_id': 'REP11107100027',
+					'invoice': true
+				};
+
+				$.ajax({
+					url: "http://localhost:44370/api/estimate/get",
+					type: 'POST',
+					beforeSend: function (xhr) {
+						xhr.setRequestHeader("Content-Type", "application/json"); 
+						xhr.setRequestHeader("Accept", "application/json"); 
+						xhr.setRequestHeader("email", "kishan@vesuviois.com"); 
+						xhr.setRequestHeader("password", "Abcd1#"); 
+						//xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+					},
+					dataType: "text",
+					data: JSON.stringify(estimate),
+					error: function (err) {
+						console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+					},
+					success: function (result) {
+						$("#exc").val(result).show();
+					}
+				});
+			});
+		})
+		</script>
+	</body>
+</html>
