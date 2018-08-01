@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Create Instruction - JSON</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<input type="button" class="btn btn-primary" id="btnCreateInstructionJson" value="Create Instruction (JSON)"></input>
+		<br/>
+		<textarea style="width:100%;height:200px;" id="exc"></textarea>
+
+		<script type="text/javascript">
+		$("#btnCreateInstructionJson").on("click", function () {
+			var model = `{
+							"instruction_info": {
+								"scheme_id": 2,
+								"team_id": 3,
+								"repairer_id": 1
+							},
+							"policy_holder": {
+								"full_name": "Name",
+								"email_address": "abc@test.com",
+								"address_1": "Address Line 1",
+								"address_2": "Address Line 2 ",
+								"telephone_number": "9862155791",
+								"city": "City1",
+								"post_code": "12345",
+								"vat_rate": 20.0,
+								"vat_registered": false,
+								"excess": 200.00,
+								"courtesy_car_required": true,
+								"courtesy_car_supplier": "1"
+							},
+							"about_vehicle": {
+								"registration_number": "7891",
+								"make": "Renault",
+								"model": "Kwid",
+								"has_same_address": true,
+								"address_1": "Address 1",
+								"address_2": "Address 2 ",
+								"city": "London",
+								"post_code": "17789",
+								"vehicle_collection": true
+							},
+							"about_claim": {
+								"claim_ref": "07_19_2018_1",
+								"claim_ref_1": "Test Claim 1",
+								"claim_ref_2": " Test Claim 2",
+								"accident_date": "2018-09-17",
+								"accident_circumstances": "Some Circumstances ",
+								"additional_information": "Some Additional Information",
+								"status_category": 0,
+								"type_of_damage": 1,
+								"vehicle_severity": 1,
+								"vehicle_condition": 3,
+								"payment_instruction": "some value",
+								"able_to_authorise": true,
+								"inform_to": [{
+										"organisation_id": "11234"
+									}, {
+										"organisation_id": "DAC_Cus2"
+									}
+								]
+							}
+						}`;
+
+			$.ajax({
+                    url: "http://localhost:44370/api/Instruction/create",
+                    type: "POST",
+					beforeSend: function (xhr) {
+						xhr.setRequestHeader("Content-Type", "application/json");
+						xhr.setRequestHeader("Accept", "application/json");
+						xhr.setRequestHeader("email", "info@neworg.com");
+						xhr.setRequestHeader("password", "Abcd1#");
+					},
+                    data: model,
+                    contentType: "application/json",
+                    dataType: 'text',
+                data: model,
+                error: function (err) {
+                    console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+                },
+                success: function (result) {
+				console.log(result);
+                    $("#exc").val(result).show();
+                }
+			});
+        });
+		</script>
+	</body>
+</html>
