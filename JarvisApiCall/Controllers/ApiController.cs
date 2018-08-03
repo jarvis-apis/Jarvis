@@ -63,6 +63,17 @@ namespace JarvisApiCall.Controllers
             return View("GetEstimateAndInvoiceJson", "Response Here!");
         }
 
+        [HttpGet]
+        public IActionResult GetInvoiceXml() {
+            return View("GetInvoiceXml", "Response Here!");
+        }
+
+        [HttpGet]
+        public IActionResult GetInvoiceJson()
+        {
+            return View("GetInvoiceJson", "Response Here!");
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateInstructionXml(string filePath = "") {
             string url = "instruction/create";
@@ -183,6 +194,47 @@ namespace JarvisApiCall.Controllers
             var response = await client.PostAsync(actualUrl, stringContent);
             var responseString = response.Content.ReadAsStringAsync().Result;
             return View("GetEstimateAndInvoiceJson", responseString);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetInvoiceXml(string filePath = "") {
+            string url = "invoice/get";
+            string actualUrl = $"{baseUrl}{url}";
+
+            string root = _hostingEnvironment.ContentRootPath;
+            var xmlData = System.IO.File.ReadAllText($"{root}/wwwroot/example/invoiceGet.xml");
+
+            var stringContent = new StringContent(xmlData.ToString(), Encoding.UTF8, "application/xml");
+            HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.Add("email", "info@neworg.com");
+            client.DefaultRequestHeaders.Add("password", "Abcd1#");
+            client.DefaultRequestHeaders.Add("Accept", "application/xml");
+
+            var response = await client.PostAsync(actualUrl, stringContent);
+            var responseString = response.Content.ReadAsStringAsync().Result;
+            return View("GetInvoiceXml", responseString);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetInvoiceJson(string filePath = "")
+        {
+            string url = "invoice/get";
+            string actualUrl = $"{baseUrl}{url}";
+
+            string root = _hostingEnvironment.ContentRootPath;
+            var xmlData = System.IO.File.ReadAllText($"{root}/wwwroot/example/invoiceGet.json");
+
+            var stringContent = new StringContent(xmlData.ToString(), Encoding.UTF8, "application/json");
+            HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.Add("email", "info@neworg.com");
+            client.DefaultRequestHeaders.Add("password", "Abcd1#");
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+            var response = await client.PostAsync(actualUrl, stringContent);
+            var responseString = response.Content.ReadAsStringAsync().Result;
+            return View("GetInvoiceJson", responseString);
         }
     }
 }

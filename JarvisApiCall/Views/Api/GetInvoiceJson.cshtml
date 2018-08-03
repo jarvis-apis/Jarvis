@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "Get Invoice";
+}
+
+<h2>Get Invoice (Json)</h2>
+
+<form asp-controller="Api" asp-action="GetInvoiceJson">
+    <button type="submit" class="btn btn-default">Get Invoice (Json)</button>
+    <div class="form-group">
+        @Model
+    </div>
+</form>
+
