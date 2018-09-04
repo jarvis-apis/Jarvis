@@ -85,8 +85,8 @@ namespace JarvisApiCall.Controllers
             var stringContent = new StringContent(xmlData.ToString(), Encoding.UTF8, "application/xml");
             HttpClient client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("email", "info@neworg.com");
-            client.DefaultRequestHeaders.Add("password", "Abcd1#");
+            client.DefaultRequestHeaders.Add("email", "valid jarvis email");
+            client.DefaultRequestHeaders.Add("password", "valid password");
             client.DefaultRequestHeaders.Add("Accept", "application/xml");
 
             var response = await client.PostAsync(actualUrl, stringContent);
@@ -106,8 +106,8 @@ namespace JarvisApiCall.Controllers
             var stringContent = new StringContent(jsonData.ToString(), Encoding.UTF8, "application/json");
             HttpClient client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("email", "info@neworg.com");
-            client.DefaultRequestHeaders.Add("password", "Abcd1#");
+            client.DefaultRequestHeaders.Add("email", "valid jarvis email address");
+            client.DefaultRequestHeaders.Add("password", "valid password");
             client.DefaultRequestHeaders.Add("Accept", "application/json");
 
             var response = await client.PostAsync(actualUrl, stringContent);
@@ -126,8 +126,8 @@ namespace JarvisApiCall.Controllers
             var stringContent = new StringContent(xmlData.ToString(), Encoding.UTF8, "application/xml");
             HttpClient client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("email", "info@neworg.com");
-            client.DefaultRequestHeaders.Add("password", "Abcd1#");
+            client.DefaultRequestHeaders.Add("email", "valid jarvis email address");
+            client.DefaultRequestHeaders.Add("password", "valid password");
             client.DefaultRequestHeaders.Add("Accept", "application/xml");
 
             var response = await client.PostAsync(actualUrl, stringContent);
@@ -146,8 +146,8 @@ namespace JarvisApiCall.Controllers
             var stringContent = new StringContent(xmlData.ToString(), Encoding.UTF8, "application/json");
             HttpClient client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("email", "info@neworg.com");
-            client.DefaultRequestHeaders.Add("password", "Abcd1#");
+            client.DefaultRequestHeaders.Add("email", "valid jarvis email address");
+            client.DefaultRequestHeaders.Add("password", "valid password");
             client.DefaultRequestHeaders.Add("Accept", "application/json");
 
             var response = await client.PostAsync(actualUrl, stringContent);
@@ -167,8 +167,8 @@ namespace JarvisApiCall.Controllers
             var stringContent = new StringContent(xmlData.ToString(), Encoding.UTF8, "application/xml");
             HttpClient client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("email", "info@neworg.com");
-            client.DefaultRequestHeaders.Add("password", "Abcd1#");
+            client.DefaultRequestHeaders.Add("email", "valid jarvis email address");
+            client.DefaultRequestHeaders.Add("password", "valid password");
             client.DefaultRequestHeaders.Add("Accept", "application/xml");
 
             var response = await client.PostAsync(actualUrl, stringContent);
@@ -187,8 +187,8 @@ namespace JarvisApiCall.Controllers
             var stringContent = new StringContent(xmlData.ToString(), Encoding.UTF8, "application/json");
             HttpClient client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("email", "info@neworg.com");
-            client.DefaultRequestHeaders.Add("password", "Abcd1#");
+            client.DefaultRequestHeaders.Add("email", "valid jarvis email address");
+            client.DefaultRequestHeaders.Add("password", "valid password");
             client.DefaultRequestHeaders.Add("Accept", "application/json");
 
             var response = await client.PostAsync(actualUrl, stringContent);
@@ -207,8 +207,8 @@ namespace JarvisApiCall.Controllers
             var stringContent = new StringContent(xmlData.ToString(), Encoding.UTF8, "application/xml");
             HttpClient client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("email", "info@neworg.com");
-            client.DefaultRequestHeaders.Add("password", "Abcd1#");
+            client.DefaultRequestHeaders.Add("email", "valid jarvis email address");
+            client.DefaultRequestHeaders.Add("password", "valid password");
             client.DefaultRequestHeaders.Add("Accept", "application/xml");
 
             var response = await client.PostAsync(actualUrl, stringContent);
@@ -228,8 +228,8 @@ namespace JarvisApiCall.Controllers
             var stringContent = new StringContent(xmlData.ToString(), Encoding.UTF8, "application/json");
             HttpClient client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("email", "info@neworg.com");
-            client.DefaultRequestHeaders.Add("password", "Abcd1#");
+            client.DefaultRequestHeaders.Add("email", "valid jarvis email address");
+            client.DefaultRequestHeaders.Add("password", "valid password");
             client.DefaultRequestHeaders.Add("Accept", "application/json");
 
             var response = await client.PostAsync(actualUrl, stringContent);
