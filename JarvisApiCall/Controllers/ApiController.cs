@@ -18,7 +18,7 @@ namespace JarvisApiCall.Controllers
 {
     public class ApiController : Controller
     {
-        private const string baseUrl = "http://localhost:44370/api/";
+        private const string baseUrl = "http://52.228.24.65//api/";
         private readonly IHostingEnvironment _hostingEnvironment;
 
         public ApiController(IHostingEnvironment hostingEnvironment)
