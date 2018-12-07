@@ -74,6 +74,17 @@ namespace JarvisApiCall.Controllers
             return View("GetInvoiceJson", "Response Here!");
         }
 
+        [HttpGet]
+        public IActionResult GetEstimateImagesXml() {
+            return View("GetEstimateImagesXml", "Response Here!");
+        }
+
+        [HttpGet]
+        public IActionResult GetEstimateImagesJson()
+        {
+            return View("GetEstimateImagesJson", "Response Here!");
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateInstructionXml(string filePath = "") {
             string url = "instruction/create";
@@ -235,6 +246,49 @@ namespace JarvisApiCall.Controllers
             var response = await client.PostAsync(actualUrl, stringContent);
             var responseString = response.Content.ReadAsStringAsync().Result;
             return View("GetInvoiceJson", responseString);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetEstimateImagesXml(string filePath = "") {
+
+            string xmlData = @"<estimate_image>
+                                    <estimate_id>STEP2707100010</estimate_id>
+                                    <image_id>img_asdfasdf</image_id>
+                                </estimate_image>";
+
+            string url = "estimate/getImages";
+            string actualUrl = $"{baseUrl}{url}";
+
+            var stringContent = new StringContent(xmlData.ToString(), Encoding.UTF8, "application/xml");
+            HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.Add("email", "myUsername");
+            client.DefaultRequestHeaders.Add("password", "myPassword");
+            client.DefaultRequestHeaders.Add("Accept", "application/xml");
+
+            var response = await client.PostAsync(actualUrl, stringContent);
+            var responseString = response.Content.ReadAsStringAsync().Result;
+            return View("GetEstimateImagesXml", responseString);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetEstimateImagesJson(string filePath = "")
+        {
+            string xmlData = @"{ 'estimate_id': 'STEP2707100010', 'image_id': 'img_asdfasdf' }";
+
+            string url = "estimate/getImages";
+            string actualUrl = $"{baseUrl}{url}";
+
+            var stringContent = new StringContent(xmlData.ToString(), Encoding.UTF8, "application/json");
+            HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.Add("email", "myUsername");
+            client.DefaultRequestHeaders.Add("password", "myPassword");
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+            var response = await client.PostAsync(actualUrl, stringContent);
+            var responseString = response.Content.ReadAsStringAsync().Result;
+            return View("GetEstimateImagesJson", responseString);
         }
     }
 }

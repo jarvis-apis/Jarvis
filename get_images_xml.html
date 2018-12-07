@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Get Jarvis Estimate - XML</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<input type="button" class="btn btn-primary" id="btnGetImagesXml" value="Get Images (Xml)"></input>
+		<br/>
+		<textarea style="width:100%;height:200px;" id="exc"></textarea>
+
+		<script type="text/javascript">
+		$(document).ready(function(){
+            var model = '<estimate_image><estimate_id>STEP2707100010</estimate_id><image_id>img_asdfasdf</image_id></estimate_image>';
+
+            $.ajax({
+                url: "http://localhost:44370/api/estimate/getImages",
+                type: 'POST',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Content-Type", "application/xml");
+                    xhr.setRequestHeader("Accept", "application/xml");
+                    xhr.setRequestHeader("email", "myUsername");
+                    xhr.setRequestHeader("password", "myPassword");
+                },
+				//contentType:"application/xml",
+                dataType: "text",
+                data: model,
+                error: function (err) {
+                    console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+                },
+                success: function (result) {
+                    $("#exc").val(result).show();
+                }
+            });
+        });
+		</script>
+	</body>
+</html>
